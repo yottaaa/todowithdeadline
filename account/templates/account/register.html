@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block title %}Register{% endblock %}
+{% block body %}
+    <form action="{% url 'registerview' %}" method="POST" class="form-login">
+        <h1 class="p-2 mb-2 text-dark" style="text-align: center;">Register</h1>
+        {% if message %}
+            <div class="alert alert-warning" role="alert">
+                {{ message }}
+            </div>
+        {% endif %}
+        {% csrf_token %}
+        <input class="form-control mb-2" type="text" placeholder="Username" name="username" required autofocus>
+        <input class="form-control mb-2" type="email" placeholder="Email" name="email" required>
+        <input class="form-control mb-2" type="text" placeholder="First Name" name="fname" required>
+        <input class="form-control mb-2" type="text" placeholder="Last Name" name="lname" required>
+        <input class="form-control mb-2" type="password" placeholder="Password" name="pass1" required>
+        <input class="form-control mb-2" type="password" placeholder="Confirm Password" name="pass2" required>
+        <input class="btn btn-lg btn-primary btn-block mb-2" type="submit" >
+        <p class="text-center">Already have account? <a href="{% url 'loginview' %}">Sign Up</a></p>
+    </form>
+{% endblock %}

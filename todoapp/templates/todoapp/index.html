@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% block body %}
+
+        {% if not request.user.is_authenticated %}
+            <p>You need to <a href="{% url 'loginview' %}">login</a></p>
+        {% else %}
+        <div class="container">
+            <div class="col-12">
+                <h1>{{ request.user.username }}'s Task</h1>
+                <form action="{% url 'addtask' %}" method="POST" class="form">
+                    {% csrf_token %}
+                    <div class="form-row">
+                        <div class="form-group col-10">
+                            <textarea name='task' placeholder="Add Task" style="width: 100%;"></textarea>
+                        </div>
+                        <div class="form-group col-2">
+                            <input class="btn btn-primary" type="submit">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-12">
+                {% if tasks %}
+                <div class="table-container">
+                    <table class="table table-striped table-dark table-sm table-hover">
+                        <tr>
+                            <th>Task</th>
+                            <th>Date Created</th>
+                            <th>Deadline</th>
+                            <th>Status</th>
+                        </tr>
+                    {% for task in tasks reversed %}
+                        <tr class="{% if task.status == 'COMPLETE' %}bg-success{% elif task.status == 'EXPIRED' %}bg-danger{% endif %}">
+                            <td>{{ task.tasks }}</td>
+                            <td>{{ task.date_created }}</td>
+                            <td>{{ task.deadline }}</td>
+                            <td>{{ task.status }}</td>
+                            <td><a class="btn btn-warning btn-sm" href="{% url 'edittask' task.id %}">Edit</a></td>
+                            <td><a class="btn btn-danger btn-sm" href="{% url 'deletetask' task.id %}">Delete</a></td>
+                        </tr>
+                    {% endfor %}
+                    </table>
+                </div>
+                {% else %}
+                    <p>No tasks</p>
+                {% endif %}
+            </div>
+            <div class="col-12 mt-2">
+                <p class="float-left mr-2">&copy;2020 yottaaa</p>
+                <a class="btn btn-primary btn-sm mr-2 float-right" href="{% url 'logoutview' %}">
+                    <i class="fas fa-sign-out-alt"></i>
+                    Logout
+                </a>
+                <a class="btn btn-dark btn-sm mr-2 float-right" href="https://github.com/yottaaa/yourtodoapp.git">
+                    <i class="fab fa-github"></i>
+                    Github
+                </a>
+                <p class="float-right mr-2">
+                    {{ users }} <i class="fas fa-users"></i> Users
+                </p>
+            </div>
+        </div>
+        {% endif %}
+    
+
+{% endblock %}

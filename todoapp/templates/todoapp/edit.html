@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block title %}Edit{% endblock %}
+{% block body %}
+    <form class="edit-container" action="{% url 'edittask' task.id %}" method="POST">
+        <h3>Edit Task</h3>
+        {% if message %}
+            <div class="alert alert-warning" role="alert">
+                {{ message }}
+            </div>
+        {% endif %}
+        {% csrf_token %}
+        <textarea class="form-control mb-3" name="task">{{ task.tasks }}</textarea>
+        <input class="form-control mb-3" type="date" name="deadline" id="">
+        <select name="status" class="form-control mb-3">
+            {% for value, text in choices %}
+                <option value="{{ value }}">{{ text }}</option>
+            {% endfor %}
+        </select>
+        <input class="btn btn-primary btn-block btn-lg mb-3" type="submit">
+        <a href="{% url 'todolist' %}">Go Back</a>
+    </form>
+    
+{% endblock %}
