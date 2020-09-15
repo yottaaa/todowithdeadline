@@ -10,7 +10,7 @@
                 <form action="{% url 'addtask' %}" method="POST" class="form">
                     {% csrf_token %}
                     <textarea class="form-control col-10 mb-3" name='task' placeholder="Add something you want to accomplish" style="width: 100%;"></textarea>
-                    <input class="btn btn-primary col-2" type="submit">
+                    <input class="btn btn-primary float-right" type="submit">
                 </form>
             </div>
             <div class="col-12">
