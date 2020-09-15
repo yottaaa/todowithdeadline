@@ -21,7 +21,7 @@
                 {% if tasks %}
                     {% for task in tasks reversed %}
                         <div class="card">
-                            <div class="card-header {% if task.status == 'COMPLETE' %}text-white bg-success{% endif == 'EXPIRED' %}text-white bg-danger{% endif %}">{{ task.status }}</div>
+                            <div class="card-header {% if task.status == 'COMPLETE' %}text-white bg-success{% endif task.status == 'EXPIRED' %}text-white bg-danger{% endif %}">{{ task.status }}</div>
                             <div class="card-body">
                                 <h5 class="card-title">{{ task.tasks }}</h5>
                                 <p class="card-text"><small class="text-muted">Deadline: {{ task.deadline }}</small></p>
