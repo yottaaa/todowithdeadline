@@ -5,14 +5,18 @@
             <p>You need to <a href="{% url 'loginview' %}">login</a></p>
         {% else %}
         <div style="width: 100%;max-width: 500px;">
-            <form action="{% url 'addtask' %}" method="POST" class="col-12 mb-3">
+            <div class="col-12 mb-3">
+                <form action="{% url 'addtask' %}" method="POST">
                     <h1>{{ request.user.username }}'s Goals</h1>
                     {% csrf_token %}
-                    <div class="row justify-content-center">
-                        <textarea class="col-12 form-control" name='task' placeholder="Add something you want to accomplish" style="width: 100%;"></textarea>
-                        <input class="col-2 btn btn-primary" type="submit" value="Add">
+                    <div class="form-group col-10">
+                        <textarea class="form-control" name='task' placeholder="Add something you want to accomplish" style="width: 100%;"></textarea>
                     </div>
-            </form>
+                    <div class="form-group col-2">
+                        <input class="btn btn-primary" type="submit" value="Add">
+                    </div>
+                </form>
+            </div>
             <div class="col-12">
                 {% if tasks %}
                     {% for task in tasks reversed %}
