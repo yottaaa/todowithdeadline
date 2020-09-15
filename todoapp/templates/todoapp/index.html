@@ -5,7 +5,7 @@
             <p>You need to <a href="{% url 'loginview' %}">login</a></p>
         {% else %}
         <div class="container">
-            <div class="col-12">
+            <div class="col-12" style="position: fixed;">
                 <h1>{{ request.user.username }}'s Task</h1>
                 <form action="{% url 'addtask' %}" method="POST" class="form">
                     {% csrf_token %}
@@ -42,7 +42,7 @@
                     <p>No tasks</p>
                 {% endif %}
             </div>
-            <div class="col-12 mt-2">
+            <div class="col-12 mt-2" style="position: fixed;">
                 <p class="float-left mr-2">&copy;2020 yottaaa</p>
                 <a class="btn btn-primary btn-sm mr-2 float-right" href="{% url 'logoutview' %}">
                     <i class="fas fa-sign-out-alt"></i>
