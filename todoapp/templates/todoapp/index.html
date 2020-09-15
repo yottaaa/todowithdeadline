@@ -9,12 +9,8 @@
                 <h1>{{ request.user.username }}'s Goals</h1>
                 <form action="{% url 'addtask' %}" method="POST" class="form">
                     {% csrf_token %}
-                    <div class="form-row">
-                        <textarea class="form-control col-10 mb-3" name='task' placeholder="Add something you want to accomplish" style="width: 100%;"></textarea>
-                        <div class="form-group col-2">
-                            <input class="btn btn-primary" type="submit">
-                        </div>
-                    </div>
+                    <textarea class="form-control col-10 mb-3" name='task' placeholder="Add something you want to accomplish" style="width: 100%;"></textarea>
+                    <input class="btn btn-primary col-2" type="submit">
                 </form>
             </div>
             <div class="col-12">
@@ -22,10 +18,10 @@
                     {% for task in tasks reversed %}
                         <div class="card mb-3">
                             <div class="card-header {% if task.status == 'COMPLETE' %}text-white bg-success{% elif task.status == 'EXPIRED' %}text-white bg-danger{% endif %}">{{ task.status }}
-                            <a class="{% if task.status == 'COMPLETE' or task.status == 'EXPIRED' %}text-white{% else %}text-dark{% endif %} mr-2 float-right" href="{% url 'deletetask' task.id %}">
+                            <a class="{% if task.status == 'COMPLETE' or task.status == 'EXPIRED' %}text-white{% else %}text-dark{% endif %} mr-4 float-right" href="{% url 'deletetask' task.id %}">
                                 <i class="far fa-trash-alt"></i>
                             </a>
-                            <a class="{% if task.status == 'COMPLETE' or task.status == 'EXPIRED' %}text-white{% else %}text-dark{% endif %} mr-2 float-right" href="{% url 'edittask' task.id %}">
+                            <a class="{% if task.status == 'COMPLETE' or task.status == 'EXPIRED' %}text-white{% else %}text-dark{% endif %} mr-4 float-right" href="{% url 'edittask' task.id %}">
                                 <i class="far fa-edit"></i>
                             </a>
                             </div>
