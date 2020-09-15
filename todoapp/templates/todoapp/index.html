@@ -4,7 +4,7 @@
         {% if not request.user.is_authenticated %}
             <p>You need to <a href="{% url 'loginview' %}">login</a></p>
         {% else %}
-        <div style="width: 100%; max-width: 500px;">
+        <div style="width: 100%;max-width: 500px;">
             <form action="{% url 'addtask' %}" method="POST" class="mb-3">
                 <h1>{{ request.user.username }}'s Goals</h1>
                 {% csrf_token %}
