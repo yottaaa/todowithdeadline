@@ -5,7 +5,7 @@
             <p>You need to <a href="{% url 'loginview' %}">login</a></p>
         {% else %}
         <div style="width: 100%;max-width: 500px;">
-            <div class="card mb-3">
+            <div class="col-12 mb-3">
                 <form action="{% url 'addtask' %}" method="POST">
                     <h1>{{ request.user.username }}'s Goals</h1>
                     {% csrf_token %}
