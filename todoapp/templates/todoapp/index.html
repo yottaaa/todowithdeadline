@@ -21,9 +21,9 @@
                 {% if tasks %}
                     {% for task in tasks reversed %}
                         <div class="card">
+                            <div class="card-header {% if task.status == 'COMPLETE' %}bg-success{% endif == 'EXPIRED' %}bg-danger{% endif %}">{{ task.status }}</div>
                             <div class="card-body">
-                                <h5 class="card-title">Task {{ task.tasks }}</h5>
-                                <h6 class="card-subtitle mb-2">{{ task.status }}</h6>
+                                <h5 class="card-title">{{ task.tasks }}</h5>
                                 <p class="card-text"><small class="text-muted">Deadline: {{ task.deadline }}</small></p>
                                 <a class="text-primary mr-2" href="{% url 'edittask' task.id %}">Edit</a>
                                 <a class="text-danger mr-2" href="{% url 'deletetask' task.id %}">Delete</a>
