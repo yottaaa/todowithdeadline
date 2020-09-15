@@ -8,16 +8,15 @@
             <form action="{% url 'addtask' %}" method="POST" class="mb-3">
                 <h1>{{ request.user.username }}'s Goals</h1>
                 {% csrf_token %}
-                <div class="form-row">
-                    <div class="form-group col-10">
-                        <textarea name='task' placeholder="Add something you want to accomplish" style="width: 100%;"></textarea>
+                <div class="row">
+                    <div class="col-10">
+                        <textarea class="form-control" name='task' placeholder="Add something you want to accomplish" style="width: 100%;"></textarea>
                     </div>
-                    <div class="form-group col-2">
-                        <input class="btn btn-primary" type="submit">
+                    <div class="col-2">
+                        <input class="btn btn-primary form-control" type="submit">
                     </div>
                 </div>
             </form>
-            </div>
             <div class="col-12">
                 {% if tasks %}
                     {% for task in tasks reversed %}
