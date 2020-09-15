@@ -10,7 +10,7 @@
                     <h1>{{ request.user.username }}'s Goals</h1>
                     {% csrf_token %}
                     <textarea class="form-control mb-2" name='task' placeholder="Add something you want to accomplish" style="width: 100%;"></textarea>
-                    <input class="btn btn-primary" type="submit">
+                    <input class="btn btn-primary float-right" type="submit">
                 </form>
             </div>
             <div class="col-12">
